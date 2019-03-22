@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<title>Raymond Lei's Personal Webpage</title>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: auto;
+    overflow: auto;
+	box-shadow:10px 10px 10px;
+	border-radius: 50px;
+}
+section{ 
+    padding: 15px;
+	border-radius: 10px;
+    background-color: #f7f6b9;
+    box-shadow: 10px 10px 10px;
+	margin-bottom: 1%;
+}
+
+.btn-class{
+ display: inline-block;
+ border: none;
+ color: #000;
+ border-radius: 4px;
+ -webkit-border-radius: 4px;
+ -moz-border-radius: 4px;
+ font-family: Verdana;
+ width: auto%;
+ height: auto;
+ font-size: 16px;
+ padding: 10px 40px;
+ box-shadow: inset 0px -1px 0px 0 #787878,0px 5px 0px 0 #191919,1px 9px 17px 4px #B3B3B3;
+ -moz-box-shadow: inset 0px -1px 0px 0 #787878,0px 5px 0px 0 #191919,1px 9px 17px 4px #B3B3B3;
+ -webkit-box-shadow: inset 0px -1px 0px 0 #787878,0px 5px 0px 0 #191919,1px 9px 17px 4px #B3B3B3;
+ text-shadow: 0 1px 0 #48576D;
+ background-image: linear-gradient(to top, #DEDEDE, #636363);
+ background-color: #F2F2F2;
+}
+.btn-class:hover, .btn-class:active{
+ border: none;
+ color: #FFF;
+ box-shadow: inset 0px 1px 0px 0 #90ADD2,0px 2px 0px 0 #223955,0px 4px 3px 0 #6B6B6B;
+ -moz-box-shadow: inset 0px 1px 0px 0 #90ADD2,0px 2px 0px 0 #223955,0px 4px 3px 0 #6B6B6B;
+ -webkit-box-shadow: inset 0px 1px 0px 0 #90ADD2,0px 2px 0px 0 #223955,0px 4px 3px 0 #6B6B6B;
+ background-color: #395e8d;
+}
+white{
+ color: #FFF;
+}
+body  {
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+	background-size:cover;
+}
+</style>
+<link href="css/default.css" rel="stylesheet" />
+<head>
+</head>
+<ul>
+  <a class="btn-class" href="index.html">Home</div>
+  <a class="btn-class" href="Math.html"><white>Mathematics</white></a>
+  <a class="btn-class" href="Physics.html">Physics</a>
+  <a class="btn-class" href="Unity.html">Unity</a>
+  <a class="btn-class" href="HtmlPage.html">Html</a>
+  <a class="btn-class" href="Javascript.html">Javascript</a>
+  <a class="btn-class" href="About.html">About</a>
+</ul>
+<div style="margin-left:15%;padding:1px 16px;">
+<body>
+<section>
+<h1>Physics</h1>
+</section>
+<section>
+   <h1>Physics</h1>
+    <br>Xmax(Ymax):<input id="width" type="number" />
+    <br>Number of Vectors:<input id="numberOfVectors" type="number" style="width: 40px"/>
+    <script src="js/VectorBox.js"></script>
+    <br><vectorBox id="vectorBox"></vectorBox>
+    <div style="clear:both;">
+        <button type="button" onclick="myVectorBox.init()">Insert</button>
+        <button type="button" onclick="init()">Graph</button>
+    </div>
+    <br>
+    <div>
+        <canvas class="canvasBox" id="myDrawVectorCanvas" ></canvas>
+    </div>
+    <script src="js/DrawVectors.js"></script>
+</section>
+<section>
+
+</section>
+</body>
+</div >
+</html>

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Physics</title>
+    <link href="css/default.css" rel="stylesheet" />
+</head>
+<body>
+   <h1>Physics</h1>
+    <br>Xmax(Ymax):<input id="width" type="number" />
+    <br>Number of Vectors:<input id="numberOfVectors" type="number" style="width: 40px"/>
+    <script src="js/VectorBox.js"></script>
+    <br><vectorBox id="vectorBox"></vectorBox>
+    <div style="clear:both;">
+        <button type="button" onclick="myVectorBox.init()">Insert</button>
+        <button type="button" onclick="init()">Graph</button>
+    </div>
+    <br>
+    <div>
+        <canvas class="canvasBox" id="canvas" ></canvas>
+    </div>
+    <script src="js/DrawVectors.js"></script>
+        
+</body>
+</html>

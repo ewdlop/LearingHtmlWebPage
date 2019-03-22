@@ -1,0 +1,87 @@
+<html>
+<body>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+
+<script>
+
+function insert(head,value,n){
+		var i=0;
+		var p=head;
+		if(n==0&&p!=null){
+			var N0=Object.create(llist);
+			N0.value=value;
+			N0.next=head;
+			head=N0;
+			head.print();
+			return;
+		}
+		while(p.next!=null){
+			i++;
+			if(i==n){
+			 var Nn=Object.create(llist);
+			 Nn.value=value;
+			 Nn.next=p.next;
+			 p.next=Nn;
+			 head.print();
+			}
+			p=p.next;
+		}
+		//at the tail
+		var tail=Object.create(llist);
+		tail.value=value;
+		p.next= tail;
+		head.print();
+}
+
+
+var llist = {
+	value: 0,
+	next: null,
+	print: function(){
+		var p=this;
+		while(p!=null){
+			console.log(p.value);
+			p=p.next;
+		}
+	},
+	remove: function(n)
+	{
+		//need head;
+		var i=0;
+		var p=this;
+		while(p!=null){
+			i++;
+			if(i==n){
+				if(p.next!=null&&p.next.next!=null)
+				{
+					p.next=p.next.next;
+					this.print();	
+					return null;
+				}
+				else
+				{
+					//at the tail
+					p.next=null;	
+				}
+			}
+			p=p.next;
+		}
+		this.print();
+	},
+	update: function(value, n){
+	
+	}
+};
+
+var Head=Object.create(llist);
+Head.value=1;
+
+
+document.getElementById("demo").innerHTML ="";
+
+</script>
+
+</body>
+</html>
