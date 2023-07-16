@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<style></style>
+<head>
+<title>Raymond Lei's Javascript stuff</title>
+<div>
+  <ul>
+    <li><label>Number of Particle:</label><input id=particlenumber type="text"/></li>
+	<li><label>Width:</label><input id=width type="text"/></li>
+	<li><label>Height:</label><input id=height type="text"/></li>
+  </ul>
+</div>
+<p>Click on blackscreen to add particle</p>
+<li><p id="MyEdit">Number of Particle: 0</p></li>
+<li><button onclick="init()">Click me</button></li>
+
+<!-- <canvas id="myCanvas" width="900" height="900" style="border:1px solid #d3d3d3;"></canvas> -->
+
+
+<script>
+	
+   function init(){
+ 
+ 
+	var canvas = document.createElement("canvas"),
+	c = canvas.getContext("2d");
+	
+	inputWidth=document.getElementById("width");
+	inputHeight=document.getElementById("height");
+	
+	canvas.width= inputWidth.value;
+	canvas.height= inputHeight.value;
+	
+	document.body.appendChild(canvas);
+	
+	c.fillStyle = "black";
+	c.fillRect(0,0,canvas.width,canvas.height);
+	
+	var time = 0,
+		interval=20,/*in millisecond*/
+		angularspeed=0.5/180*Math.PI,/*0.5 degree per millisecond*/
+		max=20,
+		min=-20,
+		particles={},
+		particleindex=0,
+		inputparticleNumber=document.getElementById("particlenumber");
+		particleNumber=inputparticleNumber.value;
+
+	function Particle(circle){
+		this.angularspeed=0;
+		this.x=canvas.width/2;
+		this.y=canvas.height/2;
+		this.vx=Math.random()*(max-min)+min;
+		this.vy=Math.random()*(max-min)+min;
+		if(circle){
+		particleindex++;
+		particles[particleindex]=this;
+		this.id=particleindex;
+		this.color = "hsl("+parseInt(Math.random()*360,10)+",100%,50%)";
+		}
+	}
+	Particle.prototype.draw=function(){
+
+	this.x +=this.vx;
+	this.y +=this.vy;
+	
+	if(this.x>canvas.width){
+		this.x=canvas.width;
+		this.vx*=-1;
+	}
+	if(this.x<0){
+		this.x=0;
+		this.vx*=-1;
+	}
+	if(this.y>canvas.height){
+		this.y=canvas.height;
+		this.vy*=-1;
+	}
+	if(this.y<0){
+		this.y=0;
+		this.vy*=-1;
+	}
+	
+	c.fillStyle=this.color;
+	c.fillRect(this.x,this.y,10,10);
+	
+	};
+	
+	
+	Particle.prototype.drawCircle=function(time,angularspeed){
+
+	this.angularspeed=angularspeed;
+	this.x =canvas.width/2+30*Math.cos(this.angularspeed*time);
+	this.y =canvas.height/2+30*Math.sin(this.angularspeed*time);
+	
+	
+	c.fillStyle="white";
+	c.fillRect(this.x,this.y,10,10);
+	
+	};
+	
+	Particle.prototype.drawonClick=function(x,y){
+
+	this.x =x;
+	this.y =y;
+	
+	
+	c.fillStyle="white";
+	c.fillRect(this.x,this.y,10,10);
+	
+	};
+	
+	for(var i=0;i<particleNumber;i++){
+	new Particle(true);
+	}
+	var pc= new Particle(false);
+	
+	
+	
+	setInterval(function(){
+
+	time+=interval;
+	change();
+	c.fillStyle = "black";
+	c.fillRect(0,0,canvas.width,canvas.height);
+	
+	for (var i in particles){
+	particles[i].draw();
+	}
+	pc.drawCircle(time,angularspeed);
+	},interval);
+	
+	canvas.addEventListener("click", getClickPosition);
+	
+	function change(){
+	particleNumber=particleindex;
+	document.getElementById("MyEdit").innerHTML ="Number of Particle:"+parseInt(particleNumber,10);
+	}
+	function getClickPosition(event){
+	rect = canvas.getBoundingClientRect();
+	s = new Particle(true);
+	x=event.clientX-rect.left;
+	y=event.clientY-rect.top;
+	s.drawonClick(x,y);
+	}
+	
+};
+	
+</script>
+
+</head>
+<body>
+</body>
+
+</html>
